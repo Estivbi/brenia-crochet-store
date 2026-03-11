@@ -1,0 +1,133 @@
+---
+// src/components/sections/ProductGrid.astro
+import WhatsAppButton from '../ui/WhatsAppButton.astro';
+
+interface Product {
+  id: string;
+  nombre: string;
+  descripcion: string;
+  imagen: string | null;
+  precio: string;
+}
+
+const productos: Product[] = [
+  {
+    id: 'bolso-clasico-beige',
+    nombre: 'Bolso Clásico Beige',
+    descripcion: 'Elegante y versátil para cualquier ocasión. Tejido en punto bajo con hilo 100% algodón.',
+    imagen: '/images/productos/bolso-clasico-beige.jpg',
+    precio: '45€ aprox.',
+  },
+  {
+    id: 'bolso-bohemio-natural',
+    nombre: 'Bolso Bohemio Natural',
+    descripcion: 'Estilo libre y auténtico. Perfecto para el día a día con un toque artesanal único.',
+    imagen: '/images/productos/bolso-bohemio-natural.jpg',
+    precio: '50€ aprox.',
+  },
+  {
+    id: 'bolso-mini-blanco',
+    nombre: 'Mini Bolso Blanco',
+    descripcion: 'Compacto y sofisticado. Ideal para eventos especiales o salidas nocturnas.',
+    imagen: '/images/productos/bolso-mini-blanco.jpg',
+    precio: '38€ aprox.',
+  },
+  {
+    id: 'bolso-tote-arena',
+    nombre: 'Tote Arena',
+    descripcion: 'Amplio y cómodo para llevar todo lo necesario. Diseño minimalista y resistente.',
+    imagen: '/images/productos/bolso-tote-arena.jpg',
+    precio: '55€ aprox.',
+  },
+];
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
+---
+
+<section class="py-20 bg-stone-50" id="productos">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Section header -->
+    <div class="text-center mb-14">
+      <span class="inline-block text-xs font-semibold uppercase tracking-widest text-stone-500 mb-3">
+        Colección
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-semibold text-stone-800 leading-tight">
+        Nuestros Bolsos
+      </h2>
+      <p class="mt-4 text-stone-600 max-w-xl mx-auto text-lg leading-relaxed">
+        Cada pieza es única. Pregunta por disponibilidad y personalización directamente por WhatsApp.
+      </p>
+    </div>
+
+    <!-- Product grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6">
+      {productos.map((producto) => {
+        const productURL = `${siteUrl}/productos/${producto.id}`;
+        return (
+          <article class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-stone-200 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col">
+            <!-- Product image -->
+            <div class="aspect-square bg-stone-100 overflow-hidden relative">
+              <!-- Placeholder shown when image is missing -->
+              <div class="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-stone-100 to-stone-200">
+                <svg
+                  class="w-16 h-16 text-stone-300"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1"
+                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              {producto.imagen && (
+                <img
+                  src={producto.imagen}
+                  alt={`${producto.nombre} — bolso de crochet artesanal`}
+                  class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                  decoding="async"
+                  width="400"
+                  height="400"
+                />
+              )}
+            </div>
+
+            <!-- Product info -->
+            <div class="p-5 flex flex-col flex-1">
+              <h3 class="font-semibold text-stone-800 mb-1">{producto.nombre}</h3>
+              <p class="text-sm text-stone-600 leading-relaxed mb-3 flex-1">{producto.descripcion}</p>
+              <p class="text-sm font-medium text-stone-500 mb-4">{producto.precio}</p>
+
+              <!-- WhatsApp CTA per product -->
+              <WhatsAppButton
+                variant="secondary"
+                size="sm"
+                productName={producto.nombre}
+                currentURL={productURL}
+              />
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <!-- Footer CTA -->
+    <div class="text-center mt-12">
+      <p class="text-stone-600 mb-4">
+        ¿Buscas algo diferente? Podemos crear una pieza personalizada para ti.
+      </p>
+      <WhatsAppButton
+        variant="primary"
+        size="md"
+        customMessage="¡Hola! Me gustaría encargar un bolso personalizado. ¿Es posible?"
+      />
+    </div>
+
+  </div>
+</section>
