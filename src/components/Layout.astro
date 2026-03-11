@@ -14,7 +14,7 @@ export interface Props {
 const {
   title,
   description,
-  image = '/images/og-default.jpg',
+  image = '/favicon.svg',
   type = 'website',
 } = Astro.props;
 
@@ -72,7 +72,7 @@ const ogImageURL = new URL(image, Astro.site);
         "name": "Brenia Crochet",
         "description": "Bolsos de crochet hechos a mano con amor y dedicación artesanal",
         "url": "https://breniacrochet.com",
-        "logo": "https://breniacrochet.com/images/logo.png",
+        "logo": "https://breniacrochet.com/favicon.svg",
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "customer service",

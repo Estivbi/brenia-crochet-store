@@ -1,0 +1,29 @@
+---
+// src/pages/sobre-nosotros.astro
+import Layout from '../components/Layout.astro';
+import Philosophy from '../components/sections/Philosophy.astro';
+---
+
+<Layout
+  title="Sobre Nosotros"
+  description="Conoce la historia de Brenia Crochet: una marca artesanal de bolsos de crochet hechos a mano con amor y dedicación."
+>
+  <section class="py-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto text-center">
+      <span class="inline-block text-xs font-semibold uppercase tracking-widest text-stone-500 mb-3">
+        Nuestra historia
+      </span>
+      <h1 class="text-4xl sm:text-5xl font-semibold text-stone-800 leading-tight mb-6">
+        Sobre Brenia Crochet
+      </h1>
+      <p class="text-lg text-stone-600 leading-relaxed">
+        Brenia Crochet nació del amor por el trabajo manual y la artesanía. Cada bolso
+        es creado a mano, con materiales cuidadosamente seleccionados y una dedicación
+        que se nota en cada punto. Somos una pequeña marca con grandes valores: calidad,
+        transparencia y trato personalizado.
+      </p>
+    </div>
+  </section>
+
+  <Philosophy />
+</Layout>
