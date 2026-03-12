@@ -4,12 +4,16 @@
 /**
  * Builds a WhatsApp wa.me URL with an optional pre-filled message.
  *
- * @param phone   - Phone number without '+' (e.g. '34612345678')
- * @param message - Plain-text message (will be URI-encoded)
+ * @param phone     - Phone number without '+' (e.g. '34612345678')
+ * @param [message] - Plain-text message (will be URI-encoded). If omitted or empty, no `text` query parameter is added.
  */
-export function buildWhatsAppUrl(phone: string, message: string): string {
+export function buildWhatsAppUrl(phone: string, message?: string): string {
+  const baseUrl = `https://wa.me/${phone}`;
+  if (message == null || message === '') {
+    return baseUrl;
+  }
   const encodedMessage = encodeURIComponent(message);
-  return `https://wa.me/${phone}?text=${encodedMessage}`;
+  return `${baseUrl}?text=${encodedMessage}`;
 }
 
 /**

@@ -15,28 +15,28 @@ const productos: Product[] = [
     id: 'bolso-clasico-beige',
     nombre: 'Bolso Clásico Beige',
     descripcion: 'Elegante y versátil para cualquier ocasión. Tejido en punto bajo con hilo 100% algodón.',
-    imagen: '/images/productos/bolso-clasico-beige.jpg',
+    imagen: null,
     precio: '45€ aprox.',
   },
   {
     id: 'bolso-bohemio-natural',
     nombre: 'Bolso Bohemio Natural',
     descripcion: 'Estilo libre y auténtico. Perfecto para el día a día con un toque artesanal único.',
-    imagen: '/images/productos/bolso-bohemio-natural.jpg',
+    imagen: null,
     precio: '50€ aprox.',
   },
   {
     id: 'bolso-mini-blanco',
     nombre: 'Mini Bolso Blanco',
     descripcion: 'Compacto y sofisticado. Ideal para eventos especiales o salidas nocturnas.',
-    imagen: '/images/productos/bolso-mini-blanco.jpg',
+    imagen: null,
     precio: '38€ aprox.',
   },
   {
     id: 'bolso-tote-arena',
     nombre: 'Tote Arena',
     descripcion: 'Amplio y cómodo para llevar todo lo necesario. Diseño minimalista y resistente.',
-    imagen: '/images/productos/bolso-tote-arena.jpg',
+    imagen: null,
     precio: '55€ aprox.',
   },
 ];
@@ -63,7 +63,7 @@ const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
     <!-- Product grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-6">
       {productos.map((producto) => {
-        const productURL = `${siteUrl}/productos/${producto.id}`;
+        const productURL = `${siteUrl}/productos`;
         return (
           <article class="group bg-white rounded-2xl overflow-hidden shadow-sm border border-stone-200 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col">
             <!-- Product image -->
